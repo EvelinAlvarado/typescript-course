@@ -49,6 +49,7 @@ disney = false;
 
 let arrayNumbers: number[] = [1, 2, 3, 4, 5];
 let arrayLetters: string[] = ["a", "b", "c"];
+let myList: Array<string> = ["Boris", "Peluzo", "Gigio"];
 
 arrayLetters[0].length;
 
@@ -61,6 +62,22 @@ arrayLetters[0].length;
 };
 
 console.log(person); */
+
+//SETS: No repite en el console.log
+let mySet: Set<string> = new Set(["Boris", "Peluzo", "Gigio"]);
+console.log(mySet);
+//Set(3) { 'Boris', 'Peluzo', 'Gigio' }
+
+//MAPS: (clave:valor)
+let myMap: Map<string, number> = new Map([
+  ["Boris", 12],
+  ["Peluzo", 11],
+]);
+myMap.set("Gigio", 10);
+console.log(myMap);
+// Map(3) { 'Boris' => 12, 'Peluzo' => 11, 'Gigio' => 10 }
+console.log(myMap.get("Boris"));
+//12
 
 // TYPE PERSONALIZADO
 // Notar que empieza con mayuscula

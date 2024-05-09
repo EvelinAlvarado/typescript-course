@@ -43,7 +43,29 @@ disney = false;
 // Array
 let arrayNumbers = [1, 2, 3, 4, 5];
 let arrayLetters = ["a", "b", "c"];
+let myList = ["Boris", "Peluzo", "Gigio"];
 arrayLetters[0].length;
+// Objects
+/* let person = {
+  name: "Richard",
+  technologies: ["React", "Angular", "Svelte"],
+  drinks: false,
+};
+
+console.log(person); */
+//SETS: No repite en el console.log
+let mySet = new Set(["Boris", "Peluzo", "Gigio"]);
+console.log(mySet);
+//Set(3) { 'Boris', 'Peluzo', 'Gigio' }
+//MAPS: (clave:valor)
+let myMap = new Map([
+    ["Boris", 12],
+    ["Peluzo", 11],
+]);
+myMap.set("Gigio", 10);
+console.log(myMap);
+// Map(3) { 'Boris' => 12, 'Peluzo' => 11, 'Gigio' => 10 }
+console.log(myMap.get("Boris"));
 let person = {
     name: "Richard",
     technologies: ["React", "Angular", "Svelte"],
