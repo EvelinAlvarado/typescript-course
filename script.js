@@ -1,5 +1,25 @@
 "use strict";
 console.log("Hello with TYPESCRIPT using watch");
+/*
+ *Tipos de JS
+ * -number
+ * -string
+ * -boolean
+ * -null
+ * -undefined
+ * -object
+ * -function
+ *
+ * Tipos de TypeScript
+ * -any (evitar usarlo porque elimina el proposito de usar TS)
+ * -unknown
+ * -never
+ * -arrays
+ * -tuplas
+ * -Enums
+ *
+ * Tipos inferidos
+ */
 /* tsc fileName.ts */
 /* tsc script.ts => para compilar archivo de ts a js */
 // Modo observador : para que se actualice en tiempo real
@@ -11,7 +31,7 @@ console.log("Hello with TYPESCRIPT using watch");
 /* Despues de usar el modo observador aparecerá_
 "use strict";
 en los archivos js  */
-// Boolean
+// ********Boolean
 let isBoolean = true;
 if (isBoolean) {
     console.log("is boolean");
@@ -19,11 +39,12 @@ if (isBoolean) {
 else {
     console.log("is not boolean");
 }
-// Number
+// **********Number
 let realMadrid = 11;
 let milan = 11;
 let messi = 1;
 let messiPlays = true;
+//**********Function
 // void(vacio)= function no regresa nada
 function play(team1, team2, messiPlays) {
     if (messiPlays)
@@ -36,28 +57,76 @@ function play(team1, team2, messiPlays) {
         console.log("Draw");
 }
 play(realMadrid, milan, messiPlays);
-// Any: cualquier tipo de dato, EVITARLO!
+// !Any: cualquier tipo de dato, EVITARLO!
 let disney = "cats";
 disney = 45;
 disney = false;
-// Array
+// ********Array
 let arrayNumbers = [1, 2, 3, 4, 5];
 let arrayLetters = ["a", "b", "c"];
+let checks = [];
+/* otra forma */
 let myList = ["Boris", "Peluzo", "Gigio"];
+/* el autocompletado sugiere métodos del tipo de dato */
 arrayLetters[0].length;
-// Objects
-/* let person = {
-  name: "Richard",
-  technologies: ["React", "Angular", "Svelte"],
-  drinks: false,
+// ******Tuplas
+/* Son un tipode datos que no existen en JS. Una TUPLA es una variable que contiene un set de datos que se encuentran ordenados. Es de longitud fija, no se puede adicionar mas a menos que se encuentren definidos */
+/* Se sugiere mantener 2 o 3 datos en la tuplas */
+let tupla = [1, "gatito feliz"];
+let tuplaConArray = [3, ["gato", "perro"]];
+// *****Enums
+const chica = "s";
+const mediana = "m";
+//PascalCase
+var Marcas;
+(function (Marcas) {
+    Marcas[Marcas["Gucci"] = 0] = "Gucci";
+    Marcas[Marcas["Valentino"] = 1] = "Valentino";
+    Marcas[Marcas["Hermes"] = 2] = "Hermes";
+    Marcas[Marcas["Zara"] = 3] = "Zara";
+})(Marcas || (Marcas = {}));
+/* Al compilar le asigna por defecto el index desde 0, sino se quiere eso se le asigna un valor inicial */
+var Seasons;
+(function (Seasons) {
+    Seasons[Seasons["Primavera"] = 3] = "Primavera";
+    Seasons[Seasons["Verano"] = 4] = "Verano";
+    Seasons[Seasons["Otono"] = 5] = "Otono";
+    Seasons[Seasons["Invierno"] = 6] = "Invierno";
+})(Seasons || (Seasons = {}));
+/* Tambien se le puede asignar una string, pero a todas */
+var Talla;
+(function (Talla) {
+    Talla["Chica"] = "s";
+    Talla["Mediana"] = "m";
+    Talla["Grande"] = "l";
+    Talla["ExtraGrande"] = "xl";
+})(Talla || (Talla = {}));
+/* Estes enums generan un *IFEE*: Inmediated invoked function expression (ver en el archivo de JS) */
+const variable1 = Talla.ExtraGrande;
+const estado = 2 /* LoadingState.Success */;
+// ********Objects
+let personDetails = {
+    name: "Richard",
+    technologies: ["React", "Angular", "Svelte"],
+    drinks: false,
 };
-
-console.log(person); */
-//SETS: No repite en el console.log
+console.log(personDetails);
+// ? *****Tipado inferido ******
+const objeto = { id: 1 };
+objeto.nombre =
+    "Carmen"; /* seria invalido, no se le puede adicionar porque no esta definido */
+const objeto5 = { id: 4, nombre: "" };
+objeto5.nombre =
+    "Rosa"; /* aqui si se le podria adicionar porque esta definido */
+// ? *****Tipado explicito ******
+const objeto8 = { id: 5, name: "Federico", talla: Talla.Grande };
+objeto8.id = 45; //!ERROR
+objeto8.name = "Jose";
+//****SETS: No repite en el console.log
 let mySet = new Set(["Boris", "Peluzo", "Gigio"]);
 console.log(mySet);
 //Set(3) { 'Boris', 'Peluzo', 'Gigio' }
-//MAPS: (clave:valor)
+//*******MAPS: (clave:valor)
 let myMap = new Map([
     ["Boris", 12],
     ["Peluzo", 11],
@@ -70,11 +139,21 @@ let person = {
     name: "Richard",
     technologies: ["React", "Angular", "Svelte"],
     drinks: false,
+    direccion: {
+        numero: 2,
+        calle: "La Avenida",
+        pais: "Portugal",
+    },
 };
 let person2 = {
     name: "Charles",
     technologies: ["HTML", "Cobol"],
     drinks: true,
+    direccion: {
+        numero: 5,
+        calle: "Jupiter",
+        pais: "Suiza",
+    },
 };
 let dev = {
     name: "Charles",
